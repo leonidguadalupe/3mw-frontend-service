@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
+import { CONFIG } from '../../config.js';
 import DatapointDatePicker from './datapoint-view.js';
 
 const useStyles = makeStyles(theme => ({
@@ -64,7 +65,7 @@ export default function DatapointComponent() {
       alert('Pick a plant')
     }
     else{
-      fetch(`http://0.0.0.0:8000/monitoring/?${searchParams.toString()}`)
+      fetch(`${CONFIG.BACKEND_BASE_URL}/monitoring/?${searchParams.toString()}`)
         .then(function(response){
           return response.json()
         })
