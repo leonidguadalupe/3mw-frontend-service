@@ -13,6 +13,8 @@ import Select from '@material-ui/core/Select';
 import SelectComponent from '../plant/subcomponents/select-component.js';
 import Typography from '@material-ui/core/Typography';
 
+import { CONFIG } from '../../config.js';
+
 const useStyles = makeStyles(theme => ({
   paperRoot:{
     padding: theme.spacing(3, 2),
@@ -84,7 +86,8 @@ export default function ReportsComponent(){
       alert('Select stat date')
     }
     else{
-      fetch(`http://0.0.0.0:8000/report/?${searchParams.toString()}`)
+      //
+      fetch(`${CONFIG.BACKEND_BASE_URL}/report/?${searchParams.toString()}`)
       .then(function(response){
         return response.json()
       })
@@ -93,6 +96,7 @@ export default function ReportsComponent(){
           //setGlobal({reports: data}); 
           //to do: how to manage global state vs continuously changing data from backend service
           setStats(data.data);
+
         }
       )
     }

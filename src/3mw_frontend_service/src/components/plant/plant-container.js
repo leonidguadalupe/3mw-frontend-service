@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
 
+import { CONFIG } from '../../config.js';
 import PlantList from './plant-view.js';
 
 class PlantComponent extends React.Component {
@@ -29,8 +30,9 @@ class PlantComponent extends React.Component {
     const data = new FormData(form);
     
     var that = this;
-
-    fetch('http://0.0.0.0:8000/plants/', {
+    console.log('adding');
+    console.log(CONFIG.BACKEND_BASE_URL);
+    fetch(`${CONFIG.BACKEND_BASE_URL}/plants/`, {
         method: 'POST',
         body: data,
         mode: 'cors',
@@ -52,7 +54,7 @@ class PlantComponent extends React.Component {
         that.setState({ "message": error.message });
         return error
       });
-    
+      console.log('success');
   }
 
   handleChange(event) {
@@ -80,7 +82,7 @@ class PlantComponent extends React.Component {
     event.preventDefault();
     var plant = JSON.parse(event.currentTarget.value);
     var that = this;
-    fetch(`http://0.0.0.0:8000/plants/${plant.uid}/`, {
+    fetch(`${CONFIG.BACKEND_BASE_URL}/plants/${plant.uid}/`, {
         method: "delete",
       }
     ).then(function(response){
@@ -101,7 +103,8 @@ class PlantComponent extends React.Component {
   }
   
   putPlantsToGlobal() {
-    fetch('http://0.0.0.0:8000/plants/')
+    console.log('putting')
+    fetch(`${CONFIG.BACKEND_BASE_URL}/plants/`)
       .then(function(response){
         return response.json()
       })
@@ -130,7 +133,7 @@ class PlantComponent extends React.Component {
                 ref={this.textInput} />
             </FormControl> 
             <FormControl>
-              <Button variant="contained" color="primary" disabled={this.state.inputFlag}>Create plant</Button>
+              <Button type="submit" variant="contained" color="primary" disabled={this.state.inputFlag}>Create plant</Button>
               <b>{this.state.message}</b>
             </FormControl>
             <PlantList plants={this.global.plants} deleter={this.deletePlant}></PlantList>
