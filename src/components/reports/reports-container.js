@@ -1,17 +1,14 @@
-import React, { useGlobal, useEffect } from 'reactn';
+import React, { useGlobal } from 'reactn';
 
 import Button from '@material-ui/core/Button';
 import Chart from './reports-view.js';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import Monthpicker from '@compeon/monthpicker';
 import Paper from '@material-ui/core/Paper';
-import Select from '@material-ui/core/Select';
 import SelectComponent from '../plant/subcomponents/select-component.js';
-import Typography from '@material-ui/core/Typography';
 
 import { CONFIG } from '../../config.js';
 
@@ -63,16 +60,6 @@ export default function ReportsComponent(){
       [event.target.name]: event.target.value,
     });
   }
-  
-  function datePickHandler(event){
-    setStatDate(event)
-  }
-  
-  useEffect(()=>{
-    function overrideStatChange(date){
-      setStatDate(date)
-    }
-  })
 
   function generateDataPoints(event){
     event.preventDefault();

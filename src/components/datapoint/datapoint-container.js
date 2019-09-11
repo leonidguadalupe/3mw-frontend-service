@@ -46,16 +46,14 @@ export default function DatapointComponent() {
   });
   const classes = useStyles();
 
-  function validateForm(event) {
-    event.preventDefault();
-    const form = event.target;
-  }
   function datePickFromHandler(event){
     setFromDate(event)
   }
+
   function datePickToHandler(event){
     setToDate(event)
   }
+
   function generateDataPoints(event){
     var searchParams = new URLSearchParams();
     searchParams.append('plant-id', values.name);
@@ -77,6 +75,7 @@ export default function DatapointComponent() {
         )
     }
   }
+  
   function handleChange(event){
     setValues({
       [event.target.name]: event.target.value,
