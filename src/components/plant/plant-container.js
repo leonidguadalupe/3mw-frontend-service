@@ -1,4 +1,4 @@
-import React, {getGlobal,setGlobal} from 'reactn';
+import React, {setGlobal} from 'reactn';
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';

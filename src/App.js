@@ -1,7 +1,6 @@
 import React from 'reactn';
 import logo from './logo.svg';
 import Datapoint from './components/datapoint/index.js';
-import Grid from '@material-ui/core/Grid';
 import Plant from './components/plant/index.js';
 import ReportsComponent from './components/reports/index.js';
 import './App.css';
