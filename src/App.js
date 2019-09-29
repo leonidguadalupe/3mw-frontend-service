@@ -1,8 +1,8 @@
 import React from 'reactn';
 import logo from './logo.svg';
-import Datapoint from './components/datapoint/index.js';
-import Plant from './components/plant/index.js';
-import ReportsComponent from './components/reports/index.js';
+import DatapointComponent from './views/datapoint/index.js';
+import PlantComponent from './views/plant/index.js';
+import ReportsComponent from './views/reports/index.js';
 import './App.css';
 
 function App() {
@@ -15,10 +15,10 @@ function App() {
         </p>
       </header>
       <div>
-        <Plant/>
+        <PlantComponent/>
       </div>
       <div>
-        <Datapoint/>
+        <DatapointComponent/>
       </div>
       <div>
         <ReportsComponent/>

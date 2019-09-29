@@ -1,7 +1,7 @@
 import React from 'reactn';
 import { ResponsiveBar } from '@nivo/bar';
 
-import './chart.css';
+import 'assets/css/chart.css';
 
 export default function Chart(props){
   //console.log(props.data.data);

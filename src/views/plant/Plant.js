@@ -7,7 +7,7 @@ import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
 
 import { CONFIG } from '../../config.js';
-import PlantList from './plant-view.js';
+import TableComponent from '../../components/Table.js';
 
 class PlantComponent extends React.Component {
   constructor(props) {
@@ -30,8 +30,6 @@ class PlantComponent extends React.Component {
     const data = new FormData(form);
     
     var that = this;
-    console.log('adding');
-    console.log(CONFIG.BACKEND_BASE_URL);
     fetch(`${CONFIG.BACKEND_BASE_URL}/plants/`, {
         method: 'POST',
         body: data,
@@ -136,7 +134,10 @@ class PlantComponent extends React.Component {
               <Button type="submit" variant="contained" color="primary" disabled={this.state.inputFlag}>Create plant</Button>
               <b>{this.state.message}</b>
             </FormControl>
-            <PlantList plants={this.global.plants} deleter={this.deletePlant}></PlantList>
+            <TableComponent 
+              plants={this.global.plants}
+              handle={this.deletePlant}
+              headers={['UID','Plant Name', 'Settings']}/>
           </form>
         </Paper>
       </Container>

@@ -1,4 +1,5 @@
 import React, {useGlobal} from 'reactn';
+import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -12,28 +13,10 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
 import { CONFIG } from '../../config.js';
-import DatapointDatePicker from './datapoint-view.js';
+import DatePicker from '../../components/Datepicker.js';
+import datapointStyle from './style.js';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paperRoot:{
-    padding: theme.spacing(3, 2),
-    marginBottom: 20,
-    marginTop: 20
-  },
-  headingPad:{
-    padding: theme.spacing(2, 2),
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-}));
+const useStyles = makeStyles(datapointStyle);
 
 export default function DatapointComponent() {
   const initD = new Date().toISOString().substring(0,10);
@@ -110,15 +93,15 @@ export default function DatapointComponent() {
         </Grid>
         <Grid container justify="flex-start" direction="row">
           <Grid item xs={3}>
-            <DatapointDatePicker initialDate={fromDate} onChange={datePickFromHandler} label="From"/>
+            <DatePicker initialDate={fromDate} onChange={datePickFromHandler} label="From"/>
           </Grid> 
           <Grid item xs={3}>
-            <DatapointDatePicker initialDate={toDate} onChange={datePickToHandler} label="To"/>
+            <DatePicker initialDate={toDate} onChange={datePickToHandler} label="To"/>
           </Grid>
         </Grid>
         <Grid container justify="flex-start" direction="row">
           <Grid item xs={3}>
-            <Button variant="contained" onClick={generateDataPoints} color="primary" className={classes.button}>
+            <Button id="generate-button" variant="contained" onClick={generateDataPoints} color="primary" className={classes.button}>
               Generate Datapoints
             </Button>
           </Grid>
@@ -128,3 +111,9 @@ export default function DatapointComponent() {
     </Container>
   )
 }
+
+DatapointComponent.contextTypes = {
+  plants: PropTypes.array,
+  fromDate: PropTypes.instanceOf(Date),
+  toDate: PropTypes.instanceOf(Date)
+};

@@ -1,9 +1,8 @@
-import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import React from 'reactn';
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers';
 
-export default function DatapointDatePicker(props){
+export default function DatePicker(props){
   const [selectedDate, setSelectedDate] = React.useState(props.initialDate);
   
   function handleDateChange(date) {

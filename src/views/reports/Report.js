@@ -1,14 +1,14 @@
 import React, { useGlobal } from 'reactn';
 
 import Button from '@material-ui/core/Button';
-import Chart from './reports-view.js';
+import Chart from 'components/Chart.js';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Monthpicker from '@compeon/monthpicker';
 import Paper from '@material-ui/core/Paper';
-import SelectComponent from '../plant/subcomponents/select-component.js';
+import SelectComponent from 'components/Select.js';
 
 import { CONFIG } from '../../config.js';
 
@@ -80,14 +80,11 @@ export default function ReportsComponent(){
       })
       .then(
         function(data){
-          //setGlobal({reports: data}); 
           //to do: how to manage global state vs continuously changing data from backend service
           setStats(data.data);
-
         }
       )
     }
-    //console.log(stats);
   }
   return (
     <Container maxWidth="lg">
